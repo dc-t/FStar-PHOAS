@@ -79,7 +79,7 @@ and denote_primop (#r #t:cpstyp)
     | PApp #_ #_ #t0 f ->
       on_domain
         (denote_cpstyp t0)
-        (fun (x:denote_cpstyp t0) -> denote_cpsterm0 r (f x) k)
+        (fun x -> denote_cpsterm0 r (f x) k)
     | PPair x1 x2 -> (x1, x2)
     | PProj1 p -> fst p
     | PProj2 p -> snd p
@@ -152,7 +152,8 @@ and let_prim (v:cpstyp -> Type)
              : Tot (primop v t2 t)
                (decreases p)=
     match p with
-    | PApp #_ #_ #t0 f -> PApp #_ #_ #t0 (on_domain (v t0) (fun (x:v t0) -> let_term v (f x) e))
+    | PApp #_ #_ #t0 f ->
+        PApp #_ #_ #t0 (on_domain (v t0) (fun (x:v t0) -> let_term v (f x) e))
     | PVar x -> PVar x
     | PT -> PT
     | PF -> PF
