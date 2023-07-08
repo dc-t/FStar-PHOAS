@@ -32,7 +32,7 @@ Some reflections on the project.
   did necessitate an extensionality lemma for denote_cpstyp.
 
 - The DApp case of correctness_lemma required the concrete map in the Arrow case
-  of denote_typ_equiv to construce the candidate required for correctness_lemma.
+  of denote_typ_equiv to construct the candidate required for correctness_lemma.
   This led to a redesign of the whole CPSifyCorrect module to take a more
   constructive bent and largely eliminate squashed types. Potentially, one could
   have worked non-constructively by unsquashing inside tactic assertions
